@@ -61,3 +61,43 @@ SELECT Product, sum(quantity)
 FROM FebSales
 WHERE location like '%Los Angeles%'
 GROUP BY Product;
+
+SELECT distinct location, count(orderID)
+FROM JanSales
+WHERE location LIKE '%NY%'
+AND length(orderid) = 6 
+AND orderid <> 'Order ID'
+GROUP BY location
+HAVING count(orderID)>2;
+
+SELECT sum(Quantity) as quantity,
+Product
+FROM FebSales 
+WHERE Product like '%Headphones%'
+GROUP BY Product;
+
+SELECT sum(quantity*price)/count(cust.acctnum)
+FROM FebSales Feb
+
+LEFT JOIN customers cust
+ON FEB.orderid=cust.order_id
+
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID';
+
+
+select sum(quantity)/count(cust.acctnum)
+FROM FebSales Feb
+
+LEFT JOIN customers cust
+ON FEB.orderid=cust.order_id
+
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID';
+
+SELECT product, 
+sum(quantity*price)
+FROM JanSales 
+GROUP BY product
+ORDER BY sum(quantity*price) desc 
+LIMIT 1
