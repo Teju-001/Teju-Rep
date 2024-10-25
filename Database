@@ -1,3 +1,4 @@
+How many orders were placed in January?
 SELECT COUNT(orderid)
 FROM JanSales
 WHERE length(orderid) = 6
@@ -43,3 +44,20 @@ ON FEB.orderid=cust.order_id
 WHERE Feb.Quantity>2
 AND length(orderid) = 6
 AND orderid <> 'Order ID';
+SELECT orderdate
+FROM FebSales
+WHERE orderdate between '02/03/19 00:00'
+AND '02/18/19 00:00';
+
+SELECT location
+FROM FebSale
+WHERE orderdate ='02/18/19 01:35';
+
+SELECT sum(quantity)
+FROM FebSales
+WHERE orderdate like '02/18/19%';
+
+SELECT Product, sum(quantity)
+FROM FebSales
+WHERE location like '%Los Angeles%'
+GROUP BY Product;
