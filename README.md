@@ -1,7 +1,14 @@
 >[!TIP]
 >Read this first
 
+#TEJU'S SQL PORTFOLIO
+#Welcome to my SQL portfolio! This repo contains SQL practice projects I completed both personally and during my data analytics course.
 
-#Teju's Break Into Tech, Example in SQL Portfolio
-#Welcome to my SQL portfolio! This code repository contains examples of SQL I've written. Feel free to take a look and reach out if you have any questions.
-SQL Portfolio
+What you'll find here:
+- Example Queries (.sql files)
+- Sample databases I worked with (.db files)
+- Practice projects exploring real-world scenarios
+
+- Tools used: SQLite and SQL
+
+  #This portfolio demostrates my foundational SQL skills in Querying, database management and problem-solving.
