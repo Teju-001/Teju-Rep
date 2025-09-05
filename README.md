@@ -14,7 +14,10 @@ Welcome to my SQL portfolio! This repo contains SQL practice projects I complete
 - **Spotifydata.db** Samples music streaming dataset used to practice user analytics and trend queries.
 - **Queries.SQL** Contains general SQL exercises demonstrating complex joins and aggregations.
 - **Chinook.DB** Standard SQLite database used for querying music sales and customer behavior.
+- **Fortune 500 Analysis** Analysis of the company's metrics (e.g., revenue, employee count, industry trends). Contains SQL queries and a short report demonstrating ranking, aggregation, and time-series comparisons.
 
-- Tools used: SQLite and SQL
+## Tools used:
+- SQLite for database management
+- SQL for querying and data manipulation
 
   #This portfolio demonstrates my foundational SQL skills in Querying, database management and problem-solving.
