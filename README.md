@@ -1,23 +1,48 @@
->[!TIP]
->Read this first
 
-## TEJU'S SQL PORTFOLIO
-Welcome to my SQL portfolio! This repo contains SQL practice projects I completed both personally and during my data analytics course.
+# Project: E-Commerce Strategic Analysis
+## The Narrative: Why This Project?
+After a long break from Data Analytics, I took on this challenge to reconnect with my root in Data Analytics. This isn't just about running queries, it is about proving that even in the sea of **9,994 rows of data**, there is a clear business story waiting to be told.
+Using **SQLite** and a raw **Superstore Dataset**, I transitioned from a "File Not Found" error to a fully functioning database that reveals exactly how an E-Commerce giant makes and loses it's money.
 
-## What you'll find here:
-- Example Queries (.sql files)
-- Sample databases I worked with (.db files)
-- Practice projects exploring real-world scenarios
+## The Technical Workflow
+Before the analysis could begin, I had to move the data from a static CSV into a relational environment.
+**Database Engine:** SQL 3
+**Management Tool:** SQLiteStudio
+**Key Challenge:** Handling "dirty" data formats, specifically using 'substr()' to fix date strings for trend analysis.
 
-## What is inside:
-- **Superstore Database.db** focuses on Sales performance dataset from a fictional retail store.
-- **Spotifydata.db** Samples music streaming dataset used to practice user analytics and trend queries.
-- **Queries.SQL** Contains general SQL exercises demonstrating complex joins and aggregations.
-- **Chinook.DB** Standard SQLite database used for querying music sales and customer behavior.
-- **Fortune 500 Analysis** Analysis of the company's metrics (e.g., revenue, employee count, industry trends). Contains SQL queries and a short report demonstrating ranking, aggregation, and time-series comparisons.
+## Deep Dive 1: The "Profit Paradox"
+**Goal:** Identify which products are the real "Breadwinners."
+**Discovery:** The data revealed a classic "Revenue Trap." While **Technology (Phones)** brings in the most cash, the **Furniture** category is secretly bleeding the company dry.
+**Insight:** Sub-categories like **Tables** and **Bookcases** show high sales but **negative profit**.
+**Recommendation:** Audit shipping costs or supplier pricing for Furniture to stop the "Profit Leak"
 
-## Tools used:
-- SQLite for database management
-- SQL for querying and data manipulation
+## SQL Logic: Product Performance
+To understand what specifically drives our revenue, I drilled down into the individual prodcut level. By Grouping nearly 10,000 transactions, I was able to indentify the **Top 20 Products** that contribute the most to our total revenue and profit. This helps the business know exactly which inventory items are 'high-priority'
+SELECT
+"Product Name",
+SUM(Sales) AS Total_Revenue,
+SUM(Profit) AS Total_Profit,
+COUNT("Order ID") AS Units_sold
+FROM SuperstoreData
+GROUP BY "Product Name"
+ORDER BY Total_Revenue DESC
+LIMIT 20;
 
-  #This portfolio demonstrates my foundational SQL skills in Querying, database management and problem-solving.
+## Cracking the Code: Dates to Monthly Insights
+To identify seasonal trends, I utilized the **substr function** to perform string manipulation on the Order Date Column. This allowed me to isolate the month and aggregate revenue, revealing a significant 3x surge during the holiday quarter (Q4).
+SELECT
+substr("Order Date", 1, 2) AS Month_snippet,
+SUM (Sales) AS Monthly_Revenue
+FROM SuperstoreData
+GROUP BY Month_snippet;
+
+## Customer Loyalty Analysis
+By aggregating sales data at the customer level, I identified the 'Power Users' of the Superstore. This analysis ranks customers **Total Lifetime Spend**, providing actionable data for a targeted VIP Loyalty Program.
+SELECT "Customer Name",
+Segment,
+COUNT ("Order ID") AS Number_of_Orders,
+SUM(SALES) AS Total_Spent
+FROM SuperstoreData
+GROUP BY "Customer Name"
+ORDER BY Total_Spent DESC
+LIMIT 20;
