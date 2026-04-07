@@ -1,7 +1,7 @@
 # Project: E-Commerce Strategic Analysis
 ## The Narrative: Why This Project?
-After a long break from Data Analytics, I took on this challenge to reconnect with my root in Data Analytics. This isn't just about running queries, it is about proving that even in the sea of **9,994 rows of data,** there is a clear business story waiting to be told.
-Using **SQLite** and a raw **Superstore Dataset.** I transitioned from a "File Not Found" error to a fully functioning database that reveals exactly how an E-Commerce giant makes and loses it's money.
+After a long break from Data Analytics, I took on this challenge to reconnect with my root in Data Analytics. This isn't just about running queries, it is about proving that even in the sea of **9,994 rows of data**, there is a clear business story waiting to be told.
+Using **SQLite** and a raw **Superstore Dataset**, I transitioned from a "File Not Found" error to a fully functioning database that reveals exactly how an E-Commerce giant makes and loses it's money.
 
 ## The Technical Workflow
 Before the analysis could begin, I had to move the data from a static CSV into a relational environment.
