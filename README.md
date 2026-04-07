@@ -18,7 +18,7 @@ Before the analysis could begin, I had to move the data from a static CSV into a
 
 ## SQL Logic: Product Performance
 To understand what specifically drives our revenue, I drilled down into the individual prodcut level. By Grouping nearly 10,000 transactions, I was able to indentify the **Top 20 Products** that contribute the most to our total revenue and profit. This helps the business know exactly which inventory items are 'high-priority'
-SELECT
+```SELECT
 "Product Name",
 SUM(Sales) AS Total_Revenue,
 SUM(Profit) AS Total_Profit,
@@ -26,23 +26,23 @@ COUNT("Order ID") AS Units_sold
 FROM SuperstoreData
 GROUP BY "Product Name"
 ORDER BY Total_Revenue DESC
-LIMIT 20;
+LIMIT 20;```
 
 ## Cracking the Code: Dates to Monthly Insights
 To identify seasonal trends, I utilized the **substr function** to perform string manipulation on the Order Date Column. This allowed me to isolate the month and aggregate revenue, revealing a significant 3x surge during the holiday quarter (Q4).
-SELECT
+```SELECT
 substr("Order Date", 1, 2) AS Month_snippet,
 SUM (Sales) AS Monthly_Revenue
 FROM SuperstoreData
-GROUP BY Month_snippet;
+GROUP BY Month_snippet;```
 
 ## Customer Loyalty Analysis
 By aggregating sales data at the customer level, I identified the 'Power Users' of the Superstore. This analysis ranks customers **Total Lifetime Spend**, providing actionable data for a targeted VIP Loyalty Program.
-SELECT "Customer Name",
+```SELECT "Customer Name",
 Segment,
 COUNT ("Order ID") AS Number_of_Orders,
 SUM(SALES) AS Total_Spent
 FROM SuperstoreData
 GROUP BY "Customer Name"
 ORDER BY Total_Spent DESC
-LIMIT 20;
+LIMIT 20;```
